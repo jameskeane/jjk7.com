@@ -130,3 +130,22 @@ $on-laptop:        800px !default;
     width:         calc(100% - (#{$spacing-unit} / 2));
   }
 }
+
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.focal-length-2023 > .column:first-child {
+  flex: 1.1897;
+}

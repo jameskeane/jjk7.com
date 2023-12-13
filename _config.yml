@@ -35,3 +35,5 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Delete exif data by: exiftool -overwrite_original -all= assets/**/*.jpg
