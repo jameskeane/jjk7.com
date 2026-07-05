@@ -22,9 +22,16 @@ if they do care they are either: Technically inclined or wanting to do illegal s
 [Project Maelstrom](https://en.wikipedia.org/wiki/Rainberry,_Inc.#Project_Maelstrom)
 [ZeroNet](https://zeronet.io/)
 
+Finding myself fascinated with the elegance of distributed hash tables like Kademlia.
+I've dabbled in creating my own version of ZeroNet, seeing the same potential for a
+fully decentralized social network... but there's one crucial flaw: viewing a site means
+you are now not only in possesion of but also *serving* that content. Tamas Kocsis the
+creator of ZeroNet disappeared in 2021, mysteriously leaving 10 donated bitcoins
+unclaimed since then. So, yeah, there's that.
+
 But you might say, hey James, you're technically inclined, and don't want to do
-illegal stuff... why don't YOU interconnect a computer and connect your content
-to other content forming a web?
+illegal stuff... we already have a way to interconnect computers and connect your
+content to other content forming a web...
 
 Right.
 
@@ -35,3 +42,11 @@ So that's what this is.
 1. Javascript is optional
 2. No tracking, analytics, advertisements, etc
 3. Use inline pictures sparingly. Prefer links out.
+
+## No reinventing the wheel
+We don't need to reinvent the wheel to go back in time, the tech still exists in it's
+purest form. Everything about the internet is backwards compatible, the page you are
+reading will likely work in IE6 (I haven't tested it).
+
+Why do we need *another* protocol? *Another* rendering format? This works fine.
+Just don't ruin it.
