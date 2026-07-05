@@ -56,10 +56,10 @@ document.addEventListener('keydown', event => {
 
 // alt-left: previous page, alt-right: next page using browser history
 document.addEventListener('keydown', event => {
-    if (event.altKey && event.key === 'ArrowLeft') {
+    if (event.altKey && (event.key === 'ArrowLeft' || event.key === 'h')) {
         history.back();
         event.preventDefault();
-    } else if (event.altKey && event.key === 'ArrowRight') {
+    } else if (event.altKey && (event.key === 'ArrowRight' || event.key === 'l')) {
         history.forward();
         event.preventDefault();
     }

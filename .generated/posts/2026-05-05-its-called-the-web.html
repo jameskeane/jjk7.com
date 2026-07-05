@@ -41,9 +41,15 @@ both failed to achieve their objectives. Most people just don&#39;t care, and
 if they do care they are either: Technically inclined or wanting to do illegal stuff.</p>
 <p><a href="https://en.wikipedia.org/wiki/Rainberry,_Inc.#Project_Maelstrom">Project Maelstrom</a>
 <a href="https://zeronet.io/">ZeroNet</a></p>
+<p>Finding myself fascinated with the elegance of distributed hash tables like Kademlia.
+I&#39;ve dabbled in creating my own version of ZeroNet, seeing the same potential for a
+fully decentralized social network... but there&#39;s one crucial flaw: viewing a site means
+you are now not only in possesion of but also <em>serving</em> that content. Tamas Kocsis the
+creator of ZeroNet disappeared in 2021, mysteriously leaving 10 donated bitcoins
+unclaimed since then. So, yeah, there&#39;s that.</p>
 <p>But you might say, hey James, you&#39;re technically inclined, and don&#39;t want to do
-illegal stuff... why don&#39;t YOU interconnect a computer and connect your content
-to other content forming a web?</p>
+illegal stuff... we already have a way to interconnect computers and connect your
+content to other content forming a web...</p>
 <p>Right.</p>
 <p>So that&#39;s what this is.</p>
 <h2>## Rules for a new web</h2><ol>
@@ -51,6 +57,11 @@ to other content forming a web?</p>
 <li>No tracking, analytics, advertisements, etc</li>
 <li>Use inline pictures sparingly. Prefer links out.</li>
 </ol>
+<h2>## No reinventing the wheel</h2><p>We don&#39;t need to reinvent the wheel to go back in time, the tech still exists in it&#39;s
+purest form. Everything about the internet is backwards compatible, the page you are
+reading will likely work in IE6 (I haven&#39;t tested it).</p>
+<p>Why do we need <em>another</em> protocol? <em>Another</em> rendering format? This works fine.
+Just don&#39;t ruin it.</p>
 
   <script>
 let count = 1;
@@ -76,10 +87,10 @@ document.addEventListener('keydown', event => {
 
 // alt-left: previous page, alt-right: next page using browser history
 document.addEventListener('keydown', event => {
-    if (event.altKey && event.key === 'ArrowLeft') {
+    if (event.altKey && (event.key === 'ArrowLeft' || event.key === 'h')) {
         history.back();
         event.preventDefault();
-    } else if (event.altKey && event.key === 'ArrowRight') {
+    } else if (event.altKey && (event.key === 'ArrowRight' || event.key === 'l')) {
         history.forward();
         event.preventDefault();
     }
