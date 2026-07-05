@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026-05-05-its-called-the-web</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #1d1f21;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    * { color: #c5c8c6; font-size: 12pt !important; }
+    h1 { color: #cc6666; }
+    h2 { color: #82bd68; }
+    h3 { color: #81a2be; }
+    p.link { margin: 2pt 0; }
+    a {
+      color: #81a4be;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1># It&#39;s called the WEB for fucks sake</h1><p>I am fully self-aware in realizing that I yearn for the &#39;better days&#39; of the web.</p>
+<p>But honestly? It fucking sucks and I hate it.</p>
+<h2>## When the future is the past</h2><p>Multiple attempts have been made to revive the &#39;small web&#39;. Gopher has seen
+a ressurgence of popularity, peaking in ~2020. The Gemini Protocol, is similar
+in it&#39;s attempt to create a text only internet.
+These rely on a unique protocol that provides enough constraint to prevent &#39;all the bad things&#39;.</p>
+<p><a href="https://en.wikipedia.org/wiki/Gopher_(protocol)#Server_census">Gopher</a>
+<a href="https://en.wikipedia.org/wiki/Gemini_(protocol)">Gemini Protocol</a></p>
+<p>Project Maelstrom and ZeroNet were attempts to &#39;decentralize&#39; the internet, allowing
+anyone to push their content to others to serve. While technically interesting,
+both failed to achieve their objectives. Most people just don&#39;t care, and
+if they do care they are either: Technically inclined or wanting to do illegal stuff.</p>
+<p><a href="https://en.wikipedia.org/wiki/Rainberry,_Inc.#Project_Maelstrom">Project Maelstrom</a>
+<a href="https://zeronet.io/">ZeroNet</a></p>
+<p>But you might say, hey James, you&#39;re technically inclined, and don&#39;t want to do
+illegal stuff... why don&#39;t YOU interconnect a computer and connect your content
+to other content forming a web?</p>
+<p>Right.</p>
+<p>So that&#39;s what this is.</p>
+<h2>## Rules for a new web</h2><ol>
+<li>Javascript is optional</li>
+<li>No tracking, analytics, advertisements, etc</li>
+<li>Use inline pictures sparingly. Prefer links out.</li>
+</ol>
+
+  <script>
+let count = 1;
+document.querySelectorAll('a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href.startsWith('http')) {
+        link.setAttribute('target', '_blank');
+    }
+    link.outerHTML = `<p class='link'><span style="color: #81a4be;">[${count++}]</span> ${link.outerHTML}</p>`;
+});
+
+// handle link select & navigation
+document.addEventListener('keydown', event => {
+    if (event.key >= '1' && event.key <= '9') {
+        const index = parseInt(event.key) - 1;
+        const links = document.querySelectorAll('a');
+        if (index < links.length) {
+            links[index].click();
+            event.preventDefault();
+        }
+    }
+});
+
+// alt-left: previous page, alt-right: next page using browser history
+document.addEventListener('keydown', event => {
+    if (event.altKey && event.key === 'ArrowLeft') {
+        history.back();
+        event.preventDefault();
+    } else if (event.altKey && event.key === 'ArrowRight') {
+        history.forward();
+        event.preventDefault();
+    }
+});
+
+// h, j k, l for scrolling the page
+document.addEventListener('keydown', event => {
+    if (event.key === 'h') {
+        window.scrollBy({ left: -100, behavior: 'smooth' });
+        event.preventDefault();
+    } else if (event.key === 'l') {
+        window.scrollBy({ left: 100, behavior: 'smooth' });
+        event.preventDefault();
+    } else if (event.key === 'j') {
+        window.scrollBy({ top: 100, behavior: 'smooth' });
+        event.preventDefault();
+    } else if (event.key === 'k') {
+        window.scrollBy({ top: -100, behavior: 'smooth' });
+        event.preventDefault();
+    }
+});
+
+// up, down for incrementing/decrementing tab index
+document.addEventListener('keydown', event => {
+    if (!['ArrowUp', 'ArrowDown'].includes(event.key)) return;
+
+    const links = Array.from(document.querySelectorAll('a'));
+    const active = document.activeElement;
+    let index = -1;
+    if (active && active.tagName === 'A') {
+        index = links.indexOf(active);
+
+        if (event.key === 'ArrowUp') {
+            const prevLink = index == 0 ? links[links.length - 1] : links[index - 1];
+            if (prevLink) {
+                prevLink.focus();
+                event.preventDefault();
+            }
+        } else if (event.key === 'ArrowDown') {
+            const nextLink = links[(index + 1) % links.length];
+            if (nextLink) {
+                nextLink.focus();
+                event.preventDefault();
+            }
+        }
+    } else {
+        const firstLink = document.querySelector('a');
+        if (firstLink) {
+            firstLink.focus();
+            event.preventDefault();
+        }
+    }
+});
+
+  </script>
+</body>
+</html>

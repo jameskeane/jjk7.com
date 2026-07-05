@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #1d1f21;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    * { color: #c5c8c6; font-size: 12pt !important; }
+    h1 { color: #cc6666; }
+    h2 { color: #82bd68; }
+    h3 { color: #81a2be; }
+    p.link { margin: 2pt 0; }
+    a {
+      color: #81a4be;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1># About me</h1><p>Hi!</p>
+<p>My name is James Keane, I am a father of 3, loving husband, and a software engineer in Canada.</p>
+<p>On my site you will find random writings that I do in my spare time, about things that are interesting to me.
+You will not find ads, pop-ups or overuse of javascript.</p>
+<p>Feel free to look around, go back with alt + ←.</p>
+<h2>## Links</h2><p>The internet is becoming less social to me, and so I with it. </p>
+<p><a href="https://github.com/jameskeane">GitHub</a>
+<a href="mailto:jjk@sdf.org">Email</a></p>
+
+  <script>
+let count = 1;
+document.querySelectorAll('a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href.startsWith('http')) {
+        link.setAttribute('target', '_blank');
+    }
+    link.outerHTML = `<p class='link'><span style="color: #81a4be;">[${count++}]</span> ${link.outerHTML}</p>`;
+});
+
+// handle link select & navigation
+document.addEventListener('keydown', event => {
+    if (event.key >= '1' && event.key <= '9') {
+        const index = parseInt(event.key) - 1;
+        const links = document.querySelectorAll('a');
+        if (index < links.length) {
+            links[index].click();
+            event.preventDefault();
+        }
+    }
+});
+
+// alt-left: previous page, alt-right: next page using browser history
+document.addEventListener('keydown', event => {
+    if (event.altKey && event.key === 'ArrowLeft') {
+        history.back();
+        event.preventDefault();
+    } else if (event.altKey && event.key === 'ArrowRight') {
+        history.forward();
+        event.preventDefault();
+    }
+});
+
+// h, j k, l for scrolling the page
+document.addEventListener('keydown', event => {
+    if (event.key === 'h') {
+        window.scrollBy({ left: -100, behavior: 'smooth' });
+        event.preventDefault();
+    } else if (event.key === 'l') {
+        window.scrollBy({ left: 100, behavior: 'smooth' });
+        event.preventDefault();
+    } else if (event.key === 'j') {
+        window.scrollBy({ top: 100, behavior: 'smooth' });
+        event.preventDefault();
+    } else if (event.key === 'k') {
+        window.scrollBy({ top: -100, behavior: 'smooth' });
+        event.preventDefault();
+    }
+});
+
+// up, down for incrementing/decrementing tab index
+document.addEventListener('keydown', event => {
+    if (!['ArrowUp', 'ArrowDown'].includes(event.key)) return;
+
+    const links = Array.from(document.querySelectorAll('a'));
+    const active = document.activeElement;
+    let index = -1;
+    if (active && active.tagName === 'A') {
+        index = links.indexOf(active);
+
+        if (event.key === 'ArrowUp') {
+            const prevLink = index == 0 ? links[links.length - 1] : links[index - 1];
+            if (prevLink) {
+                prevLink.focus();
+                event.preventDefault();
+            }
+        } else if (event.key === 'ArrowDown') {
+            const nextLink = links[(index + 1) % links.length];
+            if (nextLink) {
+                nextLink.focus();
+                event.preventDefault();
+            }
+        }
+    } else {
+        const firstLink = document.querySelector('a');
+        if (firstLink) {
+            firstLink.focus();
+            event.preventDefault();
+        }
+    }
+});
+
+  </script>
+</body>
+</html>
