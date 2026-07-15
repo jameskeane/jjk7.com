@@ -9,5 +9,6 @@ Use keyboard navigation if you want, read the source and figure it out.
 
 ## Posts
 
+[2026-07-15 - The Fediverse is dumb](posts/2026-07-15-the-fediverse-is-dumb.html)
 [2026-05-05 - It's called the web!](posts/2026-05-05-its-called-the-web.html)
 
