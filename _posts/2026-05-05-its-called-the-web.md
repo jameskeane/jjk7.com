@@ -2,7 +2,7 @@
 
 I am fully self-aware in realizing that I yearn for the 'better days' of the web.
 
-But honestly? It fucking sucks and I hate it.
+But honestly? The web today fucking sucks and I hate it.
 
 ## When the future is the past
 
@@ -50,3 +50,6 @@ reading will likely work in IE6 (I haven't tested it).
 
 Why do we need *another* protocol? *Another* rendering format? This works fine.
 Just don't ruin it.
+
+--- 
+alt+← to go back
